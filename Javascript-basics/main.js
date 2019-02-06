@@ -2,7 +2,7 @@
 /*
     JAVASCRIPT
 */
-
+"use strict";
 console.log("Hello JS!");
 
 let x = {hour:3};

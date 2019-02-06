@@ -1,0 +1,15 @@
+.bordered_image{
+    border: solid 6px goldenrod;
+    margin: 4px;
+    width: 50%;
+    height: 256px
+}
+
+.bordered_paragraph{
+    border: dashed 8px gold;
+    overflow-y: auto;
+    background-color: yellow;
+    margin: 4px;
+    height: 400px;
+    width: 400px;
+}
