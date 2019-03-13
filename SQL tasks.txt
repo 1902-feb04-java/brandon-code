@@ -1,0 +1,55 @@
+SELECT * FROM CUSTOMERS WHERE NOT country = 'USA'
+
+SELECT * FROM CUSTOMERS WHERE country = 'Brazil'
+
+SELECT * FROM employees WHERE title LIKE '%Sales%Agent%'
+
+SELECT DISTINCT billing_country FROM invoices 
+
+SELECT COUNT(id), SUM(total) FROM invoices WHERE EXTRACT(year from invoice_date) = 2009
+
+SELECT COUNT(id), SUM(total) FROM invoices WHERE EXTRACT(year FROM invoice_date) = 2011
+
+SELECT COUNT(id) FROM invoice_lines WHERE invoice_id = 37
+
+SELECT billing_country ,COUNT(id) FROM invoices GROUP BY  billing_country
+
+SELECT billing_country, SUM(total) from invoices GROUP BY billing_country ORDER BY SUM(total) DESC
+
+Select customers.first_name ||' '|| customers.last_name as "Customer", invoices.billing_country as country 
+from customers join invoices on customers.address = invoices.billing_address
+where country = 'Brazil'
+
+Select invoices.id, employees.first_name||' '||employees.last_name as "Employee"
+from invoices join customers join employees
+on employees.id = customers.support_rep_id on customers.id = invoices.customer_id
+
+Select playlists.name, 
+from tracks join playlist_track join playlists
+on playlists.id = playlist_track.playlist_id on tracks.id = playlist_track.track_id
+Group by playlists.name
+order by Count(*)
+
+Select Count(invoices.id), employees.first_name||' '||employees.last_name as "Employee"
+from invoices join customers join employees
+on employees.id = customers.support_rep_id on customers.id = invoices.customer_id
+group by "Employee"
+order by Count(*) desc
+
+Select Count(customers.id), employees.first_name||' '||employees.last_name as "Employee"
+from invoices join customers join employees
+on employees.id = customers.support_rep_id on customers.id = invoices.customer_id
+group by "Employee"
+order by Count(*) desc
+
+Select Count(c.id), emp.first_name||' '||emp.last_name as "Employee"
+from customers as c join employees as emp
+on emp.id = c.support_rep_id
+group by "Employee"
+
+
+Select name from artists
+where id not in (
+	Select artist_id from albums
+	)
+order by id

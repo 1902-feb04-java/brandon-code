@@ -1,0 +1,6 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>HelloWorld</groupId>
+    <artifact>HelloWorld</artifact>
+    <version>0.0.1</version>
+</project>
